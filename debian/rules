@@ -3,14 +3,19 @@
 	dh $@ --with python2 --buildsystem=python_distutils
 
 override_dh_install:
-	mv debian/youtube-dl/usr/etc debian/youtube-dl/
+	mv -v debian/tmp/usr/etc debian/tmp/etc
 	dh_install
 
 override_dh_installdocs:
 	dh_installdocs
-	mv debian/youtube-dl/usr/share/doc/youtube_dl/* debian/youtube-dl/usr/share/doc/youtube-dl
-	rmdir debian/youtube-dl/usr/share/doc/youtube_dl
+#	mv debian/tmp/usr/share/doc/youtube_dl/* 
+#           debian/tmp/usr/share/doc/tmp
+#	rmdir debian/tmp/usr/share/doc/youtube_dl
 
 override_dh_clean:
 	dh_clean
 	rm -rf youtube_dl.egg-info
+
+override_dh_installman:
+	touch youtube-dl.1
+	dh_installman
