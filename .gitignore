@@ -28,3 +28,7 @@ updates_key.pem
 *.part
 test/testdata
 .tox
+*~
+debian/*.log
+debian/*.substvars
+debian/files
